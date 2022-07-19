@@ -8,6 +8,7 @@ import 'package:http/http.dart';
 
 import 'flutterwave_style.dart';
 
+// ignore: must_be_immutable
 class PaymentWidget extends StatefulWidget {
   final FlutterwaveStyle style;
   final StandardRequest request;
@@ -16,7 +17,8 @@ class PaymentWidget extends StatefulWidget {
   BuildContext? loadingDialogContext;
   SnackBar? snackBar;
 
-  PaymentWidget({required this.request, required this.style, required this.mainContext});
+  PaymentWidget(
+      {required this.request, required this.style, required this.mainContext});
 
   @override
   State<StatefulWidget> createState() => _PaymentState();
@@ -50,14 +52,17 @@ class _PaymentState extends State<PaymentWidget>
           widget.style.getAppBarColor(),
         ),
         body: SafeArea(
-          child: Container(
+            child: Column(children: [
+          if (widget.style.extraWidget != null)
+            Expanded(child: widget.style.extraWidget!),
+          Container(
             width: double.infinity,
             height: 50,
             margin: EdgeInsets.fromLTRB(20, 50, 20, 0),
-            child: ElevatedButton(
+            child: TextButton(
               autofocus: true,
               onPressed: _handleButtonClicked,
-              style: ElevatedButton.styleFrom(
+              style: TextButton.styleFrom(
                   primary: widget.style.getButtonColor(),
                   textStyle: widget.style.getButtonTextStyle()),
               child: Text(
@@ -66,7 +71,7 @@ class _PaymentState extends State<PaymentWidget>
               ),
             ),
           ),
-        ),
+        ])),
       ),
     );
   }

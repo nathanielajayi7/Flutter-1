@@ -13,6 +13,7 @@ class FlutterwaveStyle {
   final TextStyle? dialogCancelTextStyle;
   final TextStyle? dialogContinueTextStyle;
   final String? buttonText;
+  final Widget? extraWidget;
 
   FlutterwaveStyle(
       {this.buttonColor,
@@ -25,6 +26,7 @@ class FlutterwaveStyle {
       this.mainTextStyle,
       this.dialogBackgroundColor,
       this.dialogCancelTextStyle,
+      this.extraWidget,
       this.dialogContinueTextStyle,
       this.buttonText});
 
