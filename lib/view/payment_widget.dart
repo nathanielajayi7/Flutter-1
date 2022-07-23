@@ -44,21 +44,23 @@ class _PaymentState extends State<PaymentWidget>
       debugShowCheckedModeBanner: widget.request.isTestMode,
       home: Scaffold(
         backgroundColor: widget.style.getMainBackgroundColor(),
-        appBar: FlutterwaveViewUtils.appBar(
+        appBar: widget.style.appBar ?? FlutterwaveViewUtils.appBar(
           context,
           widget.style.getAppBarText(),
           widget.style.getAppBarTextStyle(),
           widget.style.getAppBarIcon(),
           widget.style.getAppBarColor(),
+          widget.style.toolbarHeight,
+          widget.style.elevation
         ),
         body: SafeArea(
             child: Column(children: [
           if (widget.style.extraWidget != null)
-            Expanded(child: widget.style.extraWidget!),
+            widget.style.extraWidget!,
           Container(
             width: double.infinity,
             height: 50,
-            margin: EdgeInsets.fromLTRB(20, 50, 20, 0),
+            margin: EdgeInsets.fromLTRB(20, 50, 20, widget.style.bottomPadding),
             child: TextButton(
               autofocus: true,
               onPressed: _handleButtonClicked,
@@ -66,7 +68,7 @@ class _PaymentState extends State<PaymentWidget>
                   primary: widget.style.getButtonColor(),
                   textStyle: widget.style.getButtonTextStyle()),
               child: Text(
-                widget.style.getButtonText(),
+                widget.style.getButtonText(),                
                 style: widget.style.getButtonTextStyle(),
               ),
             ),

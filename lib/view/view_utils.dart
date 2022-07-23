@@ -105,11 +105,15 @@ class FlutterwaveViewUtils {
       final TextStyle appBarTitleTextStyle,
       final Icon appBarIcon,
       final Color appBarColor,
+      final double? toolBarHeight,
+      final double? elevation,
       [final Function? handleBackPress]) {
 
     return AppBar(
       backgroundColor: appBarColor,
       titleTextStyle: appBarTitleTextStyle,
+      elevation: elevation,
+      toolbarHeight: toolBarHeight,
       leading: IconButton(
         icon: appBarIcon,
         onPressed: () => handleBackPress == null

@@ -14,7 +14,13 @@ class FlutterwaveStyle {
   final TextStyle? dialogContinueTextStyle;
   final String? buttonText;
   final Widget? extraWidget;
-
+  final ButtonStyle? buttonStyle;
+  final double? elevation;
+  final double? toolbarHeight;
+  
+  final PreferredSizeWidget? appBar;
+  final double bottomPadding;
+ 
   FlutterwaveStyle(
       {this.buttonColor,
       this.buttonTextStyle,
@@ -28,6 +34,11 @@ class FlutterwaveStyle {
       this.dialogCancelTextStyle,
       this.extraWidget,
       this.dialogContinueTextStyle,
+      this.buttonStyle,
+      this.elevation,
+      this.appBar,
+      this.bottomPadding = 0,
+      this.toolbarHeight,
       this.buttonText});
 
   /// Returns app bar text text or default
